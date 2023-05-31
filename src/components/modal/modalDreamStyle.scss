@@ -1,0 +1,128 @@
+.emotionModal {
+}
+.typeDream {
+  border: 1px solid black;
+  text-align: center;
+  border-radius: 10px;
+}
+.selected {
+  filter: invert(20%) sepia(96%) saturate(3600%) hue-rotate(243deg)
+    brightness(95%) contrast(96%);
+}
+.buttonModalSubmit {
+  background-color: #8c44f7 !important;
+  border-color: #8c44f7 !important;
+}
+.Btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100px;
+  height: 40px;
+  border: none;
+  padding: 0px 20px;
+  background-color: #8c44f7;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px rgba(156, 76, 210, 0.205);
+  transition-duration: 0.3s;
+  svg {
+    width: 13px;
+    position: absolute;
+    right: 0;
+    margin-right: 10%;
+    fill: white;
+    transition-duration: 0.3s;
+  }
+}
+.imageBtn {
+  border: 2px solid rgb(71, 143, 179);
+  background-color: rgba(255, 126, 126, 0);
+  color: rgb(71, 143, 179);
+  svg {
+    fill: rgb(71, 143, 179);
+  }
+}
+.imageBtn:hover {
+  svg {
+    fill: white;
+  }
+  color: white;
+  background-color: rgb(71, 143, 179);
+  box-shadow: 5px 5px 0px rgba(66, 122, 174, 0.649);
+}
+.editBtn {
+  color: rgb(182, 126, 255);
+  svg {
+    fill: rgb(182, 126, 255);
+  }
+  border: 2px solid rgb(182, 126, 255);
+  background-color: rgba(255, 126, 126, 0);
+}
+.editBtn:hover {
+  svg {
+    fill: white;
+  }
+
+  color: white;
+  background-color: rgb(182, 126, 255);
+  box-shadow: 5px 5px 0px rgba(105, 24, 210, 0.641);
+}
+.deleteBtn {
+  svg {
+    fill: red;
+  }
+  border: 2px solid red;
+  color: red;
+  background-color: rgba(255, 126, 126, 0);
+  box-shadow: 5px 5px 0px rgba(212, 32, 32, 0.205);
+}
+.deleteBtn:hover {
+  svg {
+    fill: white;
+  }
+  border: 2px solid red;
+  color: red;
+  background-color: red;
+  box-shadow: 5px 5px 0px rgba(174, 31, 31, 0.575);
+}
+
+.interpretBtn {
+  color: rgb(46, 184, 194);
+  box-shadow: 5px 5px 0px rgba(32, 134, 212, 0.205);
+  background-color: rgba(255, 126, 126, 0);
+  svg {
+    fill: rgb(65, 208, 218);
+  }
+  border: 2px solid rgb(65, 208, 218);
+}
+.interpretBtn:hover {
+  color: white(65, 208, 218);
+  box-shadow: 5px 5px 0px rgb(95, 161, 165);
+  background-color: rgb(65, 208, 218);
+  svg {
+    fill: white;
+  }
+  border: 2px solid rgb(65, 208, 218);
+}
+
+.Btn:hover {
+  color: transparent;
+}
+
+.Btn:hover svg {
+  right: 43%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition-duration: 0.3s;
+}
+
+.Btn:active {
+  transform: translate(3px, 3px);
+  transition-duration: 0.3s;
+  box-shadow: 2px 2px 0px rgba(140, 32, 212, 0.122);
+}

@@ -1,0 +1,117 @@
+.cardJ {
+  border: 3px solid rgba(155, 136, 242, 0.134);
+  background-color: #8086f51d;
+  border-radius: 13px;
+}
+
+.cardJ:hover {
+  background-color: #8086f53e;
+}
+
+.cardTitle {
+  color: white;
+  border-radius: 15px;
+  padding: 10px;
+  font-weight: 500;
+  background: rgba(151, 6, 255, 0.399);
+
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  outline: none;
+
+  margin: auto;
+}
+.cardTitleButton {
+  border-radius: 7px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.cardTitleButton {
+  --primary-color: #c39af1;
+  --secondary-color: #fff;
+  --hover-color: #6770dc;
+  --arrow-width: 10px;
+  --arrow-stroke: 2px;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 20px;
+  color: var(--secondary-color);
+  padding: 1em 1.8em;
+  background: var(--primary-color);
+  display: flex;
+  transition: 0.2s background;
+  align-items: center;
+  gap: 0.6em;
+  font-weight: bold;
+}
+
+.cardTitleButton .arrow-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardTitleButton .arrow {
+  margin-top: 1px;
+  width: var(--arrow-width);
+  background: var(--primary-color);
+  height: var(--arrow-stroke);
+  position: relative;
+  transition: 0.2s;
+}
+
+.cardTitleButton .arrow::before {
+  color: white;
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  border: solid white;
+  border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+  display: inline-block;
+  top: -3px;
+  right: 3px;
+  transition: 0.2s;
+  padding: 3px;
+  transform: rotate(-45deg);
+}
+
+.cardTitleButton:hover {
+  background-color: var(--hover-color);
+}
+
+.cardTitleButton:hover .arrow {
+  background: var(--secondary-color);
+}
+
+.cardTitleButton:hover .arrow:before {
+  right: 0;
+}
+
+.em-logo {
+  width: 25px;
+}
+.scary {
+  filter: invert(28%) sepia(36%) saturate(2044%) hue-rotate(220deg)
+    brightness(87%) contrast(91%);
+}
+.sad {
+  filter: invert(61%) sepia(10%) saturate(278%) hue-rotate(321deg)
+    brightness(87%) contrast(96%);
+}
+.happy {
+  filter: invert(54%) sepia(48%) saturate(5700%) hue-rotate(159deg)
+    brightness(98%) contrast(101%);
+}
+.surprise {
+  filter: invert(12%) sepia(86%) saturate(5798%) hue-rotate(242deg)
+    brightness(109%) contrast(96%);
+}
+.angry {
+  filter: invert(24%) sepia(68%) saturate(2839%) hue-rotate(352deg)
+    brightness(106%) contrast(80%);
+}
+.disgust {
+  filter: invert(67%) sepia(74%) saturate(495%) hue-rotate(65deg)
+    brightness(41%) contrast(90%);
+}
