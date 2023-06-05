@@ -111,7 +111,7 @@ function ModalInfo(props) {
           handleShow();
         }}
       >
-        Show
+        A.I.
         <HiBookOpen />
       </button>
 
@@ -122,7 +122,7 @@ function ModalInfo(props) {
         backdrop="static"
       >
         <Modal.Header closeButton>
-          <Modal.Title className="m-auto">
+          <Modal.Title className="m-auto purple">
             Interpret your dream using AI
           </Modal.Title>
         </Modal.Header>

@@ -6,6 +6,7 @@ import moment from "moment/moment";
 import Pagination from "react-bootstrap/Pagination";
 import { Alert, Col, Image, Row, Spinner } from "react-bootstrap";
 import Card from "../journal/Card";
+import { Input, useInput } from "@nextui-org/react";
 
 function Interpretation() {
   const navigate = useNavigate();
@@ -17,6 +18,8 @@ function Interpretation() {
   const [message, setMessage] = useState(
     "Error while trying to fetch the dreams"
   );
+  const { reset } = useInput("");
+  const [filter, setFilter] = useState("");
   useEffect(() => {
     if (!myProfile) {
       navigate("/");
@@ -71,9 +74,24 @@ function Interpretation() {
 
   return (
     <>
-      <h1 className="text-center fw-bold mt-5 mb-3 personalTitle">
-        Saved interpretations
-      </h1>
+      {" "}
+      <div className="d-flex justify-content-center align-items-center ">
+        <h1 className="text-center fw-bold  personalTitle mt-5 mb-5 me-5">
+          Saved interpretations
+        </h1>{" "}
+        <Input
+          shadow={false}
+          onClearClick={reset}
+          labelPlaceholder="Search "
+          status="secondary"
+          type="text"
+          id=""
+          className=""
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+          clearable
+        />
+      </div>
       <div className="d-flex flex-column mt-5">
         {!error && loading && (
           <div className="d-flex justify-content-center mt-2 mb-4">
@@ -121,25 +139,53 @@ function Interpretation() {
           xxl={4}
           className="m-3 g-3 d-flex flex-row justify-content-center "
         >
-          {dreams?.content
-            ?.filter((d) => d.interpretation !== null)
-            .map((d, i) => (
-              <Col
-                key={`card` + i}
-                className="d-flex align-content-between flex-wrap"
-              >
-                <Card
-                  control={true}
-                  interpretation={d.interpretation}
-                  text={d.text}
-                  id={d.id}
-                  title={d.title}
-                  emotions={d.emotions}
-                  type={d.type}
-                  date={d.date}
-                />
-              </Col>
-            ))}
+          {filter &&
+            dreams?.content
+              ?.filter((d) => d.interpretation !== null)
+              ?.filter(
+                (e) =>
+                  e.title.includes(filter) ||
+                  e.emotions.some((e) => e.includes(filter)) ||
+                  e.type.some((e) => e.includes(filter))
+              )
+
+              .map((d, i) => (
+                <Col
+                  key={`card` + i}
+                  className="d-flex align-content-between flex-wrap"
+                >
+                  <Card
+                    control={true}
+                    interpretation={d.interpretation}
+                    text={d.text}
+                    id={d.id}
+                    title={d.title}
+                    emotions={d.emotions}
+                    type={d.type}
+                    date={d.date}
+                  />
+                </Col>
+              ))}
+          {!filter &&
+            dreams?.content
+              ?.filter((d) => d.interpretation !== null)
+              .map((d, i) => (
+                <Col
+                  key={`card` + i}
+                  className="d-flex align-content-between flex-wrap"
+                >
+                  <Card
+                    control={true}
+                    interpretation={d.interpretation}
+                    text={d.text}
+                    id={d.id}
+                    title={d.title}
+                    emotions={d.emotions}
+                    type={d.type}
+                    date={d.date}
+                  />
+                </Col>
+              ))}
         </Row>
       </div>
     </>

@@ -7,6 +7,7 @@ import { Alert, Col, Image, Row, Spinner } from "react-bootstrap";
 import Card from "./Card";
 import ModalDream from "../modal/ModalDream";
 import lady from "../../assets/_Layer_.jpg";
+import { Input, useInput } from "@nextui-org/react";
 function Journal() {
   const navigate = useNavigate();
   const [dreams, setDreams] = useState([]);
@@ -18,6 +19,8 @@ function Journal() {
   const [message, setMessage] = useState(
     "Error while trying to fetch the dreams"
   );
+  const { reset } = useInput("");
+  const [filter, setFilter] = useState("");
   useEffect(() => {
     if (!myProfile) {
       navigate("/");
@@ -67,7 +70,9 @@ function Journal() {
       setMessage(message + "fatal");
     }
   };
-
+  const handelChange = (value) => {
+    setFilter(value);
+  };
   const renderPage = () => {
     let td = [];
     for (let i = 1; i <= pages; i++) {
@@ -90,17 +95,29 @@ function Journal() {
 
   return (
     <>
-      <h1 className="text-center fw-bold mt-5 mb-3 personalTitle">
-        Your personal Journal
-      </h1>
-
+      <div className="d-flex justify-content-center align-items-center ">
+        <h1 className="text-center fw-bold personalTitle mt-5 mb-5 me-5">
+          Your personal Journal
+        </h1>{" "}
+        <Input
+          shadow={false}
+          onClearClick={reset}
+          labelPlaceholder="Search "
+          status="secondary"
+          type="text"
+          id=""
+          className=""
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+          clearable
+        />
+      </div>
       <div className="d-flex  flex-column mt-5">
         {" "}
         <Row
           xs={1}
           md={2}
           xl={3}
-          xxl={4}
           className="m-3 g-3 d-flex flex-row justify-content-center"
         >
           {!error && loading && (
@@ -129,20 +146,43 @@ function Journal() {
               the navbar to add a dream
             </Alert>
           )}
-          {dreams?.content?.map((d, i) => (
-            <div key={`card` + i} className="d-flex justify-content-center">
-              <Card
-                text={d.text}
-                id={d.id}
-                title={d.title}
-                emotions={d.emotions}
-                type={d.type}
-                date={d.date}
-              />
-            </div>
-          ))}
+          {filter &&
+            dreams &&
+            dreams?.content
+              ?.filter(
+                (e) =>
+                  e.title.includes(filter) ||
+                  e.emotions.some((e) => e.includes(filter)) ||
+                  e.type.some((e) => e.includes(filter))
+              )
+              .map((d, i) => (
+                <div key={`card` + i} className="d-flex justify-content-center">
+                  <Card
+                    text={d.text}
+                    id={d.id}
+                    title={d.title}
+                    emotions={d.emotions}
+                    type={d.type}
+                    date={d.date}
+                  />
+                </div>
+              ))}
+
+          {!filter &&
+            dreams?.content?.map((d, i) => (
+              <div key={`card` + i} className="d-flex justify-content-center">
+                <Card
+                  text={d.text}
+                  id={d.id}
+                  title={d.title}
+                  emotions={d.emotions}
+                  type={d.type}
+                  date={d.date}
+                />
+              </div>
+            ))}
         </Row>
-        {pages !== 1 && (
+        {!filter && pages !== 1 && (
           <Pagination className="purple pagination mt-5 m-auto mb-5">
             {renderPage()}
           </Pagination>

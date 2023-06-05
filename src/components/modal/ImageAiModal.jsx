@@ -55,12 +55,12 @@ function ModalInfo(props) {
           handleShow();
         }}
       >
-        Photo <HiPhotograph />
+        Image <HiPhotograph />
       </button>
 
       <Modal show={show} onHide={handleClose} backdrop="static">
         <Modal.Header closeButton>
-          <Modal.Title className="text-center">
+          <Modal.Title className="text-center purple">
             Create an image using Ai from your own dream
           </Modal.Title>
         </Modal.Header>{" "}

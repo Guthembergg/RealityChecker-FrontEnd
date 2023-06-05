@@ -67,7 +67,7 @@ function DelInt(props) {
 
       <Modal show={show} onHide={handleClose} backdrop="static">
         <Modal.Header closeButton>
-          <Modal.Title className="text-center">
+          <Modal.Title className="text-center purple">
             Are you sure you want to delete this interpretation?
           </Modal.Title>
         </Modal.Header>{" "}

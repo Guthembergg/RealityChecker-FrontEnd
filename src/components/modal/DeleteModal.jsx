@@ -51,7 +51,7 @@ function ModalInfo(props) {
   return (
     <>
       <button
-        className="Btn deleteBtn"
+        className="Btn deleteBtn "
         style={{ cursor: "pointer" }}
         onClick={() => {
           handleShow();
@@ -62,7 +62,7 @@ function ModalInfo(props) {
 
       <Modal show={show} onHide={handleClose} backdrop="static">
         <Modal.Header closeButton>
-          <Modal.Title className="text-center">
+          <Modal.Title className="text-center purple">
             Are you sure you want to delete this dream?
           </Modal.Title>
         </Modal.Header>{" "}
